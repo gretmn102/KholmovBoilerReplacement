@@ -1,10 +1,8 @@
 # Замена котла Холмова
 
-![лицевая сторона](./public/origin/photos/front.webp)
+![все фотки](./public/origin/photos/all.webp)
 
-![боковая сторона](./public/origin/photos/right.webp)
-
-![задняя сторона](./public/origin/photos/back.webp)
+По отдельности: [лицевая сторона](./public/origin/photos/front.webp), [боковая](./public/origin/photos/right.webp), [задняя](./public/origin/photos/back.webp).
 
 ![чертеж](./public/origin/blueprint.webp)
 
