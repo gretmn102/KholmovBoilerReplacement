@@ -3,6 +3,7 @@
 
   import Inlines from "./Inlines.svelte"
   import H1 from "../Content/H1.svelte"
+  import H2 from "../Content/H2.svelte"
 
   export let token: Token
   let heading = token as Tokens.Heading
@@ -13,9 +14,9 @@
     <Inlines tokens={heading.tokens} />
   </H1>
 {:else if heading.depth === 2}
-  <h2>
+  <H2>
     <Inlines tokens={heading.tokens} />
-  </h2>
+  </H2>
 {:else if heading.depth === 3}
   <h3>
     <Inlines tokens={heading.tokens} />
