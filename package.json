@@ -31,6 +31,8 @@
   },
   "dependencies": {
     "@fering-org/functional-helper": "^0.6.1",
-    "immutability-helper": "^3.1.1"
+    "dompurify": "^3.4.17",
+    "immutability-helper": "^3.1.1",
+    "marked": "^18.1.3"
   }
 }
