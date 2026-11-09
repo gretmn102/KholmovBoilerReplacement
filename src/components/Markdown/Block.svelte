@@ -5,6 +5,7 @@
   import Paragraph from "./Paragraph.svelte"
   import List from "./List.svelte"
   import Blockquote from "./Blockquote.svelte"
+  import Table from "./Table.svelte"
   import Html from "./inlines/Html.svelte"
 
   export let token: Token
@@ -17,6 +18,8 @@
   <Paragraph token={token} last={last} />
 {:else if token.type === "list"}
   <List token={token} last={last} />
+{:else if token.type === "table"}
+  <Table token={token} {last} />
 {:else if token.type === "space"}
   <!-- empty -->
 {:else if token.type === "blockquote"}
