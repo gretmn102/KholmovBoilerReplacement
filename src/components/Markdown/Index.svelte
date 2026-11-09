@@ -10,7 +10,7 @@
 
   $: {
     html = Option.mkSome(
-      marked.lexer(content, { async: false })
+      marked.lexer(content, { async: false, gfm: true })
     )
   }
   const isLast = (index: number) =>
