@@ -1,21 +1,15 @@
 <script lang="ts">
   import { type Token, type Tokens } from "marked"
 
-  import { concat } from "../../../lib/utils"
+  import Link from "../../Content/Link.svelte"
   import Inlines from "../Inlines.svelte"
 
   export let token: Token
   let link = token as Tokens.Link
 </script>
 
-<a
-  class={concat([
-    "text-blue-800",
-    "dark:text-blue-400",
-  ])}
+<Link
   href={link.href}
-  title={link.title}
-  target="_blank"
->
+  title={link.title}>
   <Inlines tokens={link.tokens} />
-</a>
+</Link>
