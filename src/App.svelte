@@ -16,10 +16,8 @@
     "dark:text-white",
   ])}>
     <div class={concat([
-      "grow",
-      "flex",
-      "px-2",
-      "py-2",
+      "px-3", "sm:px-10",
+      "py-8",
       "overflow-y-auto",
     ])}>
       <Fetch url="./index.md" let:resolved>
