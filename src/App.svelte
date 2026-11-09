@@ -1,5 +1,6 @@
 <script lang="ts">
   import { concat } from "./lib/utils"
+  import Markdown from "./components/Markdown/Index.svelte"
 </script>
 
 <main>
@@ -18,7 +19,8 @@
       "flex",
       "flex-col",
     ])}>
-      Hello world
+      <Markdown content="# Hello world
+[Link]() привет" />
     </div>
   </div>
 </main>
