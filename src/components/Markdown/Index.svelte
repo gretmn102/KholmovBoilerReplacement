@@ -21,10 +21,8 @@
     )
 </script>
 
-<div>
-  {#if html}
-    {#each html as token, index}
-      <Block token={token} last={isLast(index)} />
-    {/each}
-  {/if}
-</div>
+{#if html}
+  {#each html as token, index}
+    <Block token={token} last={isLast(index)} />
+  {/each}
+{/if}
