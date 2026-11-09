@@ -1,26 +1,32 @@
 <script lang="ts">
   import { concat } from "./lib/utils"
   import Markdown from "./components/Markdown/Index.svelte"
+  import Fetch from "./components/Fetch.svelte"
+  import Result from "./components/Result.svelte"
 </script>
 
 <main>
   <div class={concat([
     "flex",
-    "justify-center",
+    "flex-col",
+    "h-dvh",
+    "h-[calc(var(--vh,_1vh)_*_100)]",
+    "bg-[#e5e5e5]",
+    "dark:bg-gray-800",
+    "dark:text-white",
   ])}>
     <div class={concat([
-      "relative", // for children with absolute
-      "w-full",
-      "h-dvh",
-      "h-[calc(var(--vh,_1vh)_*_100)]",
-      "bg-gray-200",
-      "dark:bg-gray-800",
-      "dark:text-white",
+      "grow",
       "flex",
-      "flex-col",
+      "px-2",
+      "py-2",
+      "overflow-y-auto",
     ])}>
-      <Markdown content="# Hello world
-[Link]() привет" />
+      <Fetch url="./index.md" let:resolved>
+        <Result result={resolved} let:ok>
+          <Markdown content={ok} />
+        </Result>
+      </Fetch>
     </div>
   </div>
 </main>
