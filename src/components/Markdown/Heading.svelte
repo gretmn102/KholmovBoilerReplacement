@@ -2,15 +2,16 @@
   import { type Token, type Tokens } from "marked"
 
   import Inlines from "./Inlines.svelte"
+  import H1 from "../Content/H1.svelte"
 
   export let token: Token
   let heading = token as Tokens.Heading
 </script>
 
 {#if heading.depth === 1}
-  <h1>
+  <H1>
     <Inlines tokens={heading.tokens} />
-  </h1>
+  </H1>
 {:else if heading.depth === 2}
   <h2>
     <Inlines tokens={heading.tokens} />
