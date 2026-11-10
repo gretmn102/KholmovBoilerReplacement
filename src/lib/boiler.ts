@@ -2,6 +2,7 @@ import { Result } from "@fering-org/functional-helper"
 import { parse } from "yaml"
 
 export type BoilerId = string
+export type BoilerUrl = string
 
 export type Boiler = {
   name: string

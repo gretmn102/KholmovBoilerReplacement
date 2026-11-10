@@ -1,8 +1,8 @@
 <script lang="ts">
   import { link } from "svelte-spa-router"
 
-  import { Boiler, type BoilerId } from "../../lib/boiler"
   import { concat } from "../../lib/utils"
+  import { Boiler, type BoilerId } from "../../lib/boiler"
 
   export let id: BoilerId
   export let boiler: Boiler
