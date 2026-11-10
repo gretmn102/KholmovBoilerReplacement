@@ -1,68 +1,12 @@
 // @ts-check
 
-import { readdir, writeFile } from "node:fs/promises"
-import { resolve, relative, sep, join, basename, extname } from "node:path"
+import { writeFile } from "node:fs/promises"
+import path from "node:path"
 import { stringify } from "yaml"
 import fs from "node:fs"
-import path from "node:path"
 
-/**
- * @typedef {Record<string, string>} Catalog
- */
-
-const rootDir = resolve(process.argv[2] || "./public/boilers");
-const outputFile = resolve(process.argv[3] || "./public/boilers/index.yaml");
-
-/**
- * Рекурсивно собирает YAML-файлы корня и индексные файлы подпапок.
- *
- * @param {string} dir Путь к текущей папке.
- * @param {Catalog} result Собираемый каталог: ключ — имя, значение — относительный путь.
- * @param {boolean} [isRoot=false] Указывает, является ли папка корневой.
- * @returns {Promise<void>}
- */
-async function collect(dir, result, isRoot = false) {
-  const entries = await readdir(dir, { withFileTypes: true });
-
-  const files = new Set(
-    entries
-      .filter((entry) => entry.isFile())
-      .map((entry) => entry.name)
-  );
-
-  if (!isRoot) {
-    const entryFile = [
-      "index.yml",
-      "index.yaml",
-    ].find((name) => files.has(name));
-
-    if (entryFile) {
-      const key = relative(rootDir, dir).split(sep).join("/");
-      const value = relative(rootDir, join(dir, entryFile))
-        .split(sep)
-        .join("/");
-
-      result[key] = value;
-    }
-  }
-
-  for (const entry of entries) {
-    const fullPath = join(dir, entry.name);
-
-    if (entry.isDirectory()) {
-      await collect(fullPath, result);
-    } else if (
-      isRoot &&
-      entry.isFile() &&
-      /\.(yml|yaml)$/i.test(entry.name)
-    ) {
-      const key = basename(entry.name, extname(entry.name));
-      const value = relative(rootDir, fullPath).split(sep).join("/");
-
-      result[key] = value;
-    }
-  }
-}
+const rootDir = path.resolve(process.argv[2] || "./public/boilers");
+const outputFile = path.resolve(process.argv[3] || "./public/boilers/index.yaml");
 
 /**
  * Собирает YAML-файлы в корневой папке и по одному YAML-файлу
@@ -71,7 +15,7 @@ async function collect(dir, result, isRoot = false) {
  * @param {string} root Путь к корневой папке.
  * @returns {Array<[string, string]>} Пары [имя, относительный путь].
  */
-function collect2(root) {
+function collect(root) {
   const rootFullPath = path.resolve(root);
 
   /**
@@ -135,15 +79,13 @@ function collect2(root) {
   return result
 }
 
-
 /**
  * Собирает каталог и записывает его в YAML-файл.
  *
  * @returns {Promise<void>}
  */
 async function main() {
-  const result = collect2(rootDir)
-
+  const result = new Map(collect(rootDir))
 
   await writeFile(outputFile, stringify(result), "utf8");
   console.log(`Создан файл: ${outputFile}`);
