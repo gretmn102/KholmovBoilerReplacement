@@ -7,7 +7,7 @@
   import Item from "./Item.svelte"
   import BoilerFetch from "../../components/BoilerFetch.svelte"
 
-  const url = "./boilers/index.json"
+  const url = "./boilers/index.yaml"
   const fetchContext = `get ${url}`
 </script>
 
@@ -15,7 +15,7 @@
 
 <Fetch {url} let:resolved>
   <Result context={fetchContext} result={resolved} let:ok={json}>
-    <Result context={fetchContext} result={BoilersIndex.fromJson(json)} let:ok={boilersIndex}>
+    <Result context={fetchContext} result={BoilersIndex.fromYaml(json)} let:ok={boilersIndex}>
       {#if boilersIndex.length === 0}
         <p>Список котлов пуст.</p>
       {:else}

@@ -1,4 +1,5 @@
 import { Result } from "@fering-org/functional-helper"
+import { parse } from "yaml"
 
 export type BoilerId = string
 
@@ -10,9 +11,9 @@ export type Boiler = {
 }
 
 export namespace Boiler {
-  export function fromJson(json: string): Result<Boiler, string> {
+  export function fromYaml(yaml: string): Result<Boiler, string> {
     try {
-      return Result.mkOk(JSON.parse(json))
+      return Result.mkOk(parse(yaml))
     } catch (error) {
       return Result.mkError((error as Error).message)
     }

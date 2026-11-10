@@ -10,13 +10,13 @@
   }
 
   export let id: BoilerId
-  const url = `./boilers/${id}.json`
+  const url = `./boilers/${id}.yaml`
   const fetchContext = `get ${url}`
 </script>
 
 <Fetch url={url} let:resolved>
   <Result context={fetchContext} result={resolved} let:ok={json}>
-    <Result context={fetchContext} result={Boiler.fromJson(json)} let:ok={boiler}>
+    <Result context={fetchContext} result={Boiler.fromYaml(json)} let:ok={boiler}>
       <slot boiler={boiler} />
     </Result>
   </Result>
