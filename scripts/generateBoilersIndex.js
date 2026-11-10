@@ -4,8 +4,8 @@ import path from "node:path"
 import { stringify } from "yaml"
 import fs from "node:fs"
 
-const rootDir = path.resolve(process.argv[2] || "./public/boilers");
-const outputFile = path.resolve(process.argv[3] || "./public/boilers/index.yaml");
+const rootDir = path.resolve(process.argv[2] || "./public/boilers")
+const outputFile = path.resolve(process.argv[3] || "./public/boilers/index.yaml")
 
 /**
  * Собирает YAML-файлы в корневой папке и по одному YAML-файлу
@@ -15,36 +15,36 @@ const outputFile = path.resolve(process.argv[3] || "./public/boilers/index.yaml"
  * @returns {Array<[string, string]>} Пары [имя, относительный путь].
  */
 function collect(root) {
-  const rootFullPath = path.resolve(root);
+  const rootFullPath = path.resolve(root)
 
   /**
    * @param {string} extension
    */
   const isYaml = (extension) =>
-    extension === ".yml" || extension === ".yaml";
+    extension === ".yml" || extension === ".yaml"
 
   /**
    * @param {string} absolutePath
    * @returns {string}
    */
   const relativeToRoot = (absolutePath) =>
-    path.relative(rootFullPath, absolutePath);
+    path.relative(rootFullPath, absolutePath)
 
   /** @type {[string, string][]} */
-  const result = [];
+  const result = []
 
   /**
    * @param {fs.Dirent<string>} entry
    */
   function fileHandle(entry) {
-    const extension = path.extname(entry.name);
-    if (!isYaml(extension)) return;
+    const extension = path.extname(entry.name)
+    if (!isYaml(extension)) return
 
-    const nameWithoutExtension = path.basename(entry.name, extension);
-    if (nameWithoutExtension === "index") return;
+    const nameWithoutExtension = path.basename(entry.name, extension)
+    if (nameWithoutExtension === "index") return
 
-    const absolutePath = path.join(rootFullPath, entry.name);
-    result.push([nameWithoutExtension, relativeToRoot(absolutePath)]);
+    const absolutePath = path.join(rootFullPath, entry.name)
+    result.push([nameWithoutExtension, relativeToRoot(absolutePath)])
   }
 
   /**
@@ -64,7 +64,7 @@ function collect(root) {
     }
   }
 
-  const entries = fs.readdirSync(rootFullPath, { withFileTypes: true });
+  const entries = fs.readdirSync(rootFullPath, { withFileTypes: true })
 
   for (const entry of entries) {
     if (entry.isDirectory()) {
@@ -81,13 +81,13 @@ function collect(root) {
 function main() {
     const result = new Map(collect(rootDir))
     fs.writeFile(outputFile, stringify(result), { encoding: "utf-8" }, () => {
-      console.log(`Создан файл: ${outputFile}`);
-    });
+      console.log(`Создан файл: ${outputFile}`)
+    })
 }
 
 try {
   main()
 } catch (error) {
-  console.error(error);
-  process.exitCode = 1;
+  console.error(error)
+  process.exitCode = 1
 }
