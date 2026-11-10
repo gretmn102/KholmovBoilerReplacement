@@ -18,3 +18,18 @@ export namespace Boiler {
     }
   }
 }
+
+export type BoilerSummary = {
+  id: BoilerId
+  name: string
+}
+
+export namespace BoilerSummary {
+  export function listFromJson(json: string): Result<BoilerSummary[], string> {
+    try {
+      return Result.mkOk(JSON.parse(json))
+    } catch (error) {
+      return Result.mkError((error as Error).message)
+    }
+  }
+}
