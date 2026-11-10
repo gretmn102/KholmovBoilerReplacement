@@ -10,6 +10,7 @@
   }
 
   export let result: Result<Ok, any>
+  export let context: unknown | undefined = undefined
 </script>
 
 {#if result[0] === "Error"}
@@ -17,7 +18,7 @@
     <h1>Error</h1>
     <pre class={concat([
       "text-red-300"
-    ])}>{JSON.stringify(result[1], undefined, 2)}</pre>
+    ])}>{JSON.stringify({ context, error: result[1]}, undefined, 2)}</pre>
   </div>
 {:else}
   <slot ok={result[1]} />
