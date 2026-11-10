@@ -19,13 +19,10 @@ export namespace Boiler {
   }
 }
 
-export type BoilerSummary = {
-  id: BoilerId
-  name: string
-}
+export type BoilersIndex = BoilerId[]
 
-export namespace BoilerSummary {
-  export function listFromJson(json: string): Result<BoilerSummary[], string> {
+export namespace BoilersIndex {
+  export function fromJson(json: string): Result<BoilersIndex, string> {
     try {
       return Result.mkOk(JSON.parse(json))
     } catch (error) {
