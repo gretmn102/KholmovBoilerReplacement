@@ -1,12 +1,12 @@
 # Замена котла Холмова
 
-![все фотки](./public/origin/photos/all.webp)
+![все фотки](./origin/photos/all.webp)
 
-По отдельности: [лицевая сторона](./public/origin/photos/front.webp), [боковая](./public/origin/photos/right.webp), [задняя](./public/origin/photos/back.webp).
+По отдельности: [лицевая сторона](./origin/photos/front.webp), [боковая](./origin/photos/right.webp), [задняя](./origin/photos/back.webp).
 
 ## Чертеж и характеристики
 
-![чертеж](./public/origin/blueprint-2026-10-16_12-25-08.webp)
+![чертеж](./origin/blueprint-2026-10-16_12-25-08.webp)
 
 Документации нет. На самом котле сохранилась только одна этикетка — «Холмов КТМ». Характеристики пришлось восстанавливать вручную.
 
