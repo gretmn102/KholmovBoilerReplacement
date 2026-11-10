@@ -1,8 +1,6 @@
 <script lang="ts">
   import { concat } from "./lib/utils"
-  import Markdown from "./components/Markdown/Index.svelte"
-  import Fetch from "./components/Fetch.svelte"
-  import Result from "./components/Result.svelte"
+  import Routes from "./routes/Index.svelte"
 </script>
 
 <main>
@@ -20,11 +18,7 @@
       "py-8",
       "overflow-y-auto",
     ])}>
-      <Fetch url="./index.md" let:resolved>
-        <Result result={resolved} let:ok>
-          <Markdown content={ok} />
-        </Result>
-      </Fetch>
+      <Routes />
     </div>
   </div>
 </main>
