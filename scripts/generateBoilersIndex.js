@@ -1,7 +1,7 @@
 // @ts-check
 
 import path from "node:path"
-import { stringify } from "yaml"
+import yaml from "yaml"
 import fs from "node:fs"
 
 const rootDir = path.resolve(process.argv[2] || "./public/boilers")
@@ -80,7 +80,7 @@ function collect(root) {
 
 function main() {
     const result = new Map(collect(rootDir))
-    fs.writeFile(outputFile, stringify(result), { encoding: "utf-8" }, () => {
+    fs.writeFile(outputFile, yaml.stringify(result), { encoding: "utf-8" }, () => {
       console.log(`Создан файл: ${outputFile}`)
     })
 }
