@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { link } from "svelte-spa-router"
-
   import { BoilerSummary } from "../../lib/boiler"
   import Fetch from "../../components/Fetch.svelte"
   import Result from "../../components/Result.svelte"
