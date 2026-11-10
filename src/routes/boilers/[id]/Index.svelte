@@ -1,6 +1,9 @@
 <script lang="ts">
-  import { BoilerUrl, type BoilerId } from "../../../lib/boiler"
+  import { type BoilerId } from "../../../lib/boiler"
   import BoilerFetch from "../../../components/BoilerFetch.svelte"
+  import BoilersIndexFetch from "../../../components/BoilersIndexFetch.svelte"
+  import Option from "../../../components/Option.svelte"
+  import { BoilersIndex } from "../../../lib/boilersIndex"
 
   export let params: {
     id: BoilerId
@@ -9,6 +12,10 @@
   export let id: BoilerId = params.id
 </script>
 
-<BoilerFetch url={BoilerUrl.fromId(id)} let:boiler>
-  {JSON.stringify(boiler, undefined, 2)}
-</BoilerFetch>
+<BoilersIndexFetch let:boilersIndex>
+  <Option result={BoilersIndex.getUrl(boilersIndex, id)} let:ok={url} context={`Not found url for ${id} id!`}>
+    <BoilerFetch url={url} let:boiler>
+      {JSON.stringify(boiler, undefined, 2)}
+    </BoilerFetch>
+  </Option>
+</BoilersIndexFetch>

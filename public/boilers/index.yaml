@@ -1,1 +1,2 @@
-- ./boilers/boiler1.yaml
+- id: boiler1
+  url: boiler1.yaml
