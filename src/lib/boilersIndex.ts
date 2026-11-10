@@ -13,7 +13,7 @@ export namespace BoilerPath {
 
 export type BoilersIndexItem = {
   id: BoilerId
-  url: BoilerUrl
+  path: BoilerPath
 }
 
 export type BoilersIndex = BoilersIndexItem[]
@@ -31,6 +31,6 @@ export namespace BoilersIndex {
     const item = index.find(x => x.id === id)
     if (item === undefined)
       return
-    return BoilerPath.toUrl(item.url)
+    return BoilerPath.toUrl(item.path)
   }
 }
