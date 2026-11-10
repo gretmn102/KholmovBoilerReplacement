@@ -1,6 +1,5 @@
 // @ts-check
 
-import { writeFile } from "node:fs/promises"
 import path from "node:path"
 import { stringify } from "yaml"
 import fs from "node:fs"
@@ -79,19 +78,16 @@ function collect(root) {
   return result
 }
 
-/**
- * Собирает каталог и записывает его в YAML-файл.
- *
- * @returns {Promise<void>}
- */
-async function main() {
-  const result = new Map(collect(rootDir))
-
-  await writeFile(outputFile, stringify(result), "utf8");
-  console.log(`Создан файл: ${outputFile}`);
+function main() {
+    const result = new Map(collect(rootDir))
+    fs.writeFile(outputFile, stringify(result), { encoding: "utf-8" }, () => {
+      console.log(`Создан файл: ${outputFile}`);
+    });
 }
 
-main().catch((error) => {
+try {
+  main()
+} catch (error) {
   console.error(error);
   process.exitCode = 1;
-});
+}
