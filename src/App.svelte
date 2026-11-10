@@ -3,7 +3,7 @@
   import Markdown from "./components/Markdown/Index.svelte"
   import Fetch from "./components/Fetch.svelte"
   import Result from "./components/Result.svelte"
-  import Boiler from "./routes/boilers/[id]/Index.svelte"
+  import Routes from "./routes/Index.svelte"
 </script>
 
 <main>
@@ -21,7 +21,7 @@
       "py-8",
       "overflow-y-auto",
     ])}>
-      <Boiler id="boiler1"/>
+      <Routes />
       <Fetch url="./index.md" let:resolved>
         <Result result={resolved} let:ok>
           <Markdown content={ok} />

@@ -3,7 +3,11 @@
   import Fetch from "../../../components/Fetch.svelte"
   import Result from "../../../components/Result.svelte"
 
-  export let id: BoilerId
+  export let params: {
+    id: BoilerId
+  }
+
+  export let id: BoilerId = params.id
   const url = `./boilers/${id}.json`
   const fetchContext = `get ${url}`
 </script>
