@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type BoilerId } from "../../../lib/boiler"
+  import { BoilerUrl, type BoilerId } from "../../../lib/boiler"
   import BoilerFetch from "../../../components/BoilerFetch.svelte"
 
   export let params: {
@@ -9,6 +9,6 @@
   export let id: BoilerId = params.id
 </script>
 
-<BoilerFetch id={id} let:boiler>
+<BoilerFetch url={BoilerUrl.fromId(id)} let:boiler>
   {JSON.stringify(boiler, undefined, 2)}
 </BoilerFetch>

@@ -23,10 +23,10 @@
           "pl-4",
           "list-disc",
         ])}>
-          {#each boilersIndex as boilerId}
+          {#each boilersIndex as boilerUrl}
             <li>
-              <BoilerFetch id={boilerId} let:boiler>
-                <Item id={boilerId} boiler={boiler} />
+              <BoilerFetch url={boilerUrl} let:boiler>
+                <Item url={boilerUrl} boiler={boiler} />
               </BoilerFetch>
             </li>
           {/each}

@@ -1,11 +1,13 @@
 <script lang="ts">
   import { link } from "svelte-spa-router"
 
-  import { Boiler, type BoilerId } from "../../lib/boiler"
+  import { Boiler, BoilerId, type BoilerUrl } from "../../lib/boiler"
   import { concat } from "../../lib/utils"
 
-  export let id: BoilerId
+  export let url: BoilerUrl
   export let boiler: Boiler
+
+  $: id = BoilerId.fromUrl(url)
 </script>
 
 <a

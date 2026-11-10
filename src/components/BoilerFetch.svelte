@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Boiler, type BoilerId } from "../lib/boiler"
+  import { Boiler, type BoilerUrl } from "../lib/boiler"
   import Fetch from "./Fetch.svelte"
   import Result from "./Result.svelte"
 
@@ -9,8 +9,7 @@
     }
   }
 
-  export let id: BoilerId
-  const url = `./boilers/${id}.yaml`
+  export let url: BoilerUrl
   const fetchContext = `get ${url}`
 </script>
 
