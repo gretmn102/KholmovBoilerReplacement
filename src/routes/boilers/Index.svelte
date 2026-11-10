@@ -6,8 +6,8 @@
   import Result from "../../components/Result.svelte"
   import H1 from "../../components/Content/H1.svelte"
   import { concat } from "../../lib/utils"
-  import Item from "./Item.svelte";
-  import PreFetch from "./PreFetch.svelte"
+  import Item from "./Item.svelte"
+  import BoilerFetch from "../../components/BoilerFetch.svelte"
 
   const url = "./boilers/index.json"
   const fetchContext = `get ${url}`
@@ -27,9 +27,9 @@
         ])}>
           {#each boilerSummaries as boilerSummary}
             <li>
-              <PreFetch id={boilerSummary.id} let:boiler>
+              <BoilerFetch id={boilerSummary.id} let:boiler>
                 <Item id={boilerSummary.id} boiler={boiler} />
-              </PreFetch>
+              </BoilerFetch>
             </li>
           {/each}
         </ul>

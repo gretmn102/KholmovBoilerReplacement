@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { Boiler, type BoilerId } from "../../lib/boiler"
-  import Fetch from "../../components/Fetch.svelte"
-  import Result from "../../components/Result.svelte"
+  import { Boiler, type BoilerId } from "../lib/boiler"
+  import Fetch from "./Fetch.svelte"
+  import Result from "./Result.svelte"
 
 	interface $$Slots {
     default: {
