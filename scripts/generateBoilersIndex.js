@@ -32,8 +32,6 @@ async function collect(dir, result, isRoot = false) {
     const entryFile = [
       "index.yml",
       "index.yaml",
-      "just-index.yml",
-      "just-index.yaml",
     ].find((name) => files.has(name));
 
     if (entryFile) {
@@ -75,12 +73,7 @@ async function main() {
 
   await collect(rootDir, result, true);
 
-  /** @type {Catalog} */
-  const sorted = Object.fromEntries(
-    Object.entries(result).sort(([a], [b]) => a.localeCompare(b))
-  );
-
-  await writeFile(outputFile, stringify(sorted), "utf8");
+  await writeFile(outputFile, stringify(result), "utf8");
   console.log(`Создан файл: ${outputFile}`);
 }
 
