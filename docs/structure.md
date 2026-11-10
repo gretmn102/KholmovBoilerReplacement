@@ -1,22 +1,27 @@
 # Структура бойлеров
 
 ```bash
-touch some-boiler.yml
+touch boiler1.yaml
+touch boiler2.yaml
+
+touch some-boiler.yaml
 
 mkdir -p nested-boiler1
 cd nested-boiler1
-touch index.yml
+touch index.yaml
 touch some-file.jpeg
 cd ..
 
 mkdir -p nested-boiler2
 cd nested-boiler2
-touch index.yml
+touch index.yaml
 touch some-file.png
 touch some.png
 cd ..
 
-touch another-boiler.yml
+touch another-boiler.yaml
+
+touch index.yaml
 
 tree . | xclip -sel clip
 ```
@@ -24,27 +29,28 @@ tree . | xclip -sel clip
 Например, есть такая структура файлов и папок:
 
 ```
-root
-├── another-boiler.yml
-├── boiler1.yml
-├── boiler2.yml
+boilers
+├── another-boiler.yaml
+├── boiler1.yaml
+├── boiler2.yaml
+├── index.yaml
 ├── nested-boiler1
-│   ├── index.yml
+│   ├── index.yaml
 │   └── some-file.jpeg
 ├── nested-boiler2
-│   ├── just-index.yml
+│   ├── index.yaml
 │   ├── some-file.png
 │   └── some.png
-└── some-boiler.yml
+└── some-boiler.yaml
 ```
 
-Итоговый `index.yml`:
+Итоговый `index.yaml`:
 
-```yml
-another-boiler: another-boiler.yml
-boiler1: boiler1.yml
-boiler2: boiler2.yml
-nested-boiler1: nested-boiler1/index.yml
-nested-boiler2: nested-boiler2/just-index.yml
-some-boiler: some-boiler.yml
+```yaml
+another-boiler: another-boiler.yaml
+boiler1: boiler1.yaml
+boiler2: boiler2.yaml
+nested-boiler1: nested-boiler1/index.yaml
+nested-boiler2: nested-boiler2/index.yaml
+some-boiler: some-boiler.yaml
 ```
