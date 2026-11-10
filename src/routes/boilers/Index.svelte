@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BoilersIndex } from "../../lib/boiler"
+  import { BoilersIndex } from "../../lib/boilersIndex"
   import Fetch from "../../components/Fetch.svelte"
   import Result from "../../components/Result.svelte"
   import H1 from "../../components/Content/H1.svelte"
