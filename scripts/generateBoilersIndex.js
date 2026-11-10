@@ -76,7 +76,6 @@ function collect2(root) {
 
   /**
    * @param {string} extension
-   * @returns {boolean}
    */
   const isYaml = (extension) =>
     extension === ".yml" || extension === ".yaml";
@@ -87,6 +86,9 @@ function collect2(root) {
    */
   const relativeToRoot = (absolutePath) =>
     path.relative(rootFullPath, absolutePath);
+
+  /** @type {[string, string][]} */
+  const result = [];
 
   /**
    * @param {fs.Dirent<string>} entry
@@ -99,7 +101,7 @@ function collect2(root) {
     if (nameWithoutExtension === "index") return;
 
     const absolutePath = path.join(rootFullPath, entry.name);
-    files.push([nameWithoutExtension, relativeToRoot(absolutePath)]);
+    result.push([nameWithoutExtension, relativeToRoot(absolutePath)]);
   }
 
   /**
@@ -115,29 +117,22 @@ function collect2(root) {
 
     if (firstYaml) {
       const yamlPath = path.join(dirPath, firstYaml.name)
-      dirs.push([entry.name, relativeToRoot(yamlPath)])
+      result.push([entry.name, relativeToRoot(yamlPath)])
     }
   }
 
   const entries = fs.readdirSync(rootFullPath, { withFileTypes: true });
 
-  /** @type {[string, string][]} */
-  const dirs = [];
-
   for (const entry of entries) {
-    if (!entry.isDirectory()) continue;
-    dirHandle(entry)
+    if (entry.isDirectory()) {
+      dirHandle(entry)
+    }
+    if (entry.isFile()) {
+      fileHandle(entry)
+    }
   }
 
-  /** @type {[string, string][]} */
-  const files = [];
-
-  for (const entry of entries) {
-    if (!entry.isFile()) continue;
-    fileHandle(entry)
-  }
-
-  return [...dirs, ...files];
+  return result
 }
 
 
