@@ -3,6 +3,8 @@
 import { readdir, writeFile } from "node:fs/promises"
 import { resolve, relative, sep, join, basename, extname } from "node:path"
 import { stringify } from "yaml"
+import fs from "node:fs"
+import path from "node:path"
 
 /**
  * @typedef {Record<string, string>} Catalog
@@ -63,15 +65,78 @@ async function collect(dir, result, isRoot = false) {
 }
 
 /**
+ * Собирает YAML-файлы в корневой папке и по одному YAML-файлу
+ * из каждой непосредственной подпапки.
+ *
+ * @param {string} root Путь к корневой папке.
+ * @returns {Array<[string, string]>} Пары [имя, относительный путь].
+ */
+function collect2(root) {
+  const rootFullPath = path.resolve(root);
+
+  /**
+   * @param {string} extension
+   * @returns {boolean}
+   */
+  const isYaml = (extension) =>
+    extension === ".yml" || extension === ".yaml";
+
+  /**
+   * @param {string} absolutePath
+   * @returns {string}
+   */
+  const relativeToRoot = (absolutePath) =>
+    path.relative(rootFullPath, absolutePath);
+
+  const entries = fs.readdirSync(rootFullPath, { withFileTypes: true });
+
+  /** @type {[string, string][]} */
+  const dirs = [];
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+
+    const dirPath = path.join(rootFullPath, entry.name);
+    const childEntries = fs.readdirSync(dirPath, { withFileTypes: true });
+
+    const firstYaml = childEntries.find(
+      (child) => child.isFile() && isYaml(path.extname(child.name))
+    );
+
+    if (firstYaml) {
+      const yamlPath = path.join(dirPath, firstYaml.name);
+      dirs.push([entry.name, relativeToRoot(yamlPath)]);
+    }
+  }
+
+  /** @type {[string, string][]} */
+  const files = [];
+
+  for (const entry of entries) {
+    if (!entry.isFile()) continue;
+
+    const extension = path.extname(entry.name);
+    if (!isYaml(extension)) continue;
+
+    const nameWithoutExtension = path.basename(entry.name, extension);
+    if (nameWithoutExtension === "index") continue;
+
+    const absolutePath = path.join(rootFullPath, entry.name);
+    files.push([nameWithoutExtension, relativeToRoot(absolutePath)]);
+  }
+
+  return [...dirs, ...files];
+}
+
+
+/**
  * Собирает каталог и записывает его в YAML-файл.
  *
  * @returns {Promise<void>}
  */
 async function main() {
-  /** @type {Catalog} */
-  const result = {};
+  const result = collect2(rootDir)
 
-  await collect(rootDir, result, true);
 
   await writeFile(outputFile, stringify(result), "utf8");
   console.log(`Создан файл: ${outputFile}`);
