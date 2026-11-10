@@ -4,11 +4,13 @@
   import Result from "../../../components/Result.svelte"
 
   export let id: BoilerId
+  const url = `./boilers/${id}.json`
+  const fetchContext = `get ${url}`
 </script>
 
-<Fetch url={`./boilers/${id}.json`} let:resolved>
-  <Result result={resolved} let:ok={json}>
-    <Result result={Boiler.fromJson(json)} let:ok={boiler}>
+<Fetch url={url} let:resolved>
+  <Result context={fetchContext} result={resolved} let:ok={json}>
+    <Result context={fetchContext} result={Boiler.fromJson(json)} let:ok={boiler}>
       {JSON.stringify(boiler, undefined, 2)}
     </Result>
   </Result>
