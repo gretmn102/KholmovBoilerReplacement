@@ -88,6 +88,37 @@ function collect2(root) {
   const relativeToRoot = (absolutePath) =>
     path.relative(rootFullPath, absolutePath);
 
+  /**
+   * @param {fs.Dirent<string>} entry
+   */
+  function fileHandle(entry) {
+    const extension = path.extname(entry.name);
+    if (!isYaml(extension)) return;
+
+    const nameWithoutExtension = path.basename(entry.name, extension);
+    if (nameWithoutExtension === "index") return;
+
+    const absolutePath = path.join(rootFullPath, entry.name);
+    files.push([nameWithoutExtension, relativeToRoot(absolutePath)]);
+  }
+
+  /**
+   * @param {fs.Dirent<string>} entry
+   */
+  function dirHandle(entry) {
+    const dirPath = path.join(rootFullPath, entry.name)
+    const childEntries = fs.readdirSync(dirPath, { withFileTypes: true })
+
+    const firstYaml = childEntries.find(
+      (child) => child.isFile() && isYaml(path.extname(child.name))
+    )
+
+    if (firstYaml) {
+      const yamlPath = path.join(dirPath, firstYaml.name)
+      dirs.push([entry.name, relativeToRoot(yamlPath)])
+    }
+  }
+
   const entries = fs.readdirSync(rootFullPath, { withFileTypes: true });
 
   /** @type {[string, string][]} */
@@ -95,18 +126,7 @@ function collect2(root) {
 
   for (const entry of entries) {
     if (!entry.isDirectory()) continue;
-
-    const dirPath = path.join(rootFullPath, entry.name);
-    const childEntries = fs.readdirSync(dirPath, { withFileTypes: true });
-
-    const firstYaml = childEntries.find(
-      (child) => child.isFile() && isYaml(path.extname(child.name))
-    );
-
-    if (firstYaml) {
-      const yamlPath = path.join(dirPath, firstYaml.name);
-      dirs.push([entry.name, relativeToRoot(yamlPath)]);
-    }
+    dirHandle(entry)
   }
 
   /** @type {[string, string][]} */
@@ -114,15 +134,7 @@ function collect2(root) {
 
   for (const entry of entries) {
     if (!entry.isFile()) continue;
-
-    const extension = path.extname(entry.name);
-    if (!isYaml(extension)) continue;
-
-    const nameWithoutExtension = path.basename(entry.name, extension);
-    if (nameWithoutExtension === "index") continue;
-
-    const absolutePath = path.join(rootFullPath, entry.name);
-    files.push([nameWithoutExtension, relativeToRoot(absolutePath)]);
+    fileHandle(entry)
   }
 
   return [...dirs, ...files];
