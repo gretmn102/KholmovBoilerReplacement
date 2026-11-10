@@ -11,26 +11,21 @@ export namespace BoilerPath {
   }
 }
 
-export type BoilersIndexItem = {
-  id: BoilerId
-  path: BoilerPath
-}
-
-export type BoilersIndex = BoilersIndexItem[]
+export type BoilersIndex = Map<BoilerId, BoilerPath>
 
 export namespace BoilersIndex {
   export function fromYaml(yaml: string): Result<BoilersIndex, string> {
     try {
-      return Result.mkOk(parse(yaml))
+      return Result.mkOk(new Map<string, BoilerPath>(Object.entries(parse(yaml))))
     } catch (error) {
       return Result.mkError((error as Error).message)
     }
   }
 
   export function getUrl(index: BoilersIndex, id: BoilerId) {
-    const item = index.find(x => x.id === id)
-    if (item === undefined)
+    const path = index.get(id)
+    if (path === undefined)
       return
-    return BoilerPath.toUrl(item.path)
+    return BoilerPath.toUrl(path)
   }
 }

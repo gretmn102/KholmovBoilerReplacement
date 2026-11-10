@@ -10,17 +10,17 @@
 <H1>Котлы</H1>
 
 <BoilersIndexFetch let:boilersIndex>
-  {#if boilersIndex.length === 0}
+  {#if boilersIndex.size === 0}
     <p>Список котлов пуст.</p>
   {:else}
     <ul class={concat([
       "pl-4",
       "list-disc",
     ])}>
-      {#each boilersIndex as boilerIndexItem}
+      {#each [...boilersIndex] as [id, path]}
         <li>
-          <BoilerFetch url={BoilerPath.toUrl(boilerIndexItem.path)} let:boiler>
-            <Item id={boilerIndexItem.id} boiler={boiler} />
+          <BoilerFetch url={BoilerPath.toUrl(path)} let:boiler>
+            <Item id={id} boiler={boiler} />
           </BoilerFetch>
         </li>
       {/each}
