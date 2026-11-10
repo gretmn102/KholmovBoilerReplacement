@@ -8,8 +8,8 @@ import { stringify } from "yaml"
  * @typedef {Record<string, string>} Catalog
  */
 
-const rootDir = resolve(process.argv[2] || ".");
-const outputFile = resolve(process.argv[3] || "catalog.yml");
+const rootDir = resolve(process.argv[2] || "./public/boilers");
+const outputFile = resolve(process.argv[3] || "./public/boilers/index.yaml");
 
 /**
  * Рекурсивно собирает YAML-файлы корня и индексные файлы подпапок.
