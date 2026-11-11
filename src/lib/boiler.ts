@@ -19,7 +19,7 @@ export type FrameSide = "front" | "left" | "right" | "back"
 
 export type Tube = {
   diameter: number
-  // placed: FrameSide
+  placed: FrameSide
   // /** расстояние от центра патрубка к чему-то */
   // position: {
   //   /** к низу пола */

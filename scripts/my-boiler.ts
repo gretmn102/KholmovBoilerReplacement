@@ -24,11 +24,11 @@ const myBoiler: Boiler = {
   },
   chimney: {
     diameter: 160,
-    // position: undefined
+    placed: "back",
   },
   waterOutlet: {
     diameter: 59.62,
-    // position: undefined
+    placed: "right",
   }
 }
 
