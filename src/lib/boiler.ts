@@ -21,12 +21,12 @@ export type Tube = {
   diameter: number
   placed: FrameSide
   // /** расстояние от центра патрубка к чему-то */
-  // position: {
-  //   /** к низу пола */
-  //   floor: number
-  //   /** к левой стенке корпуса */
-  //   left: number | "center"
-  // }
+  position: {
+    /** к низу пола */
+    floor: number
+    /** к левой стенке корпуса */
+    left: number | "center"
+  }
 }
 
 /** английские названия характеристик брал с https://www.ter-en.com/en/konstruktsiya/ktt */
