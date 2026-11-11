@@ -1,4 +1,5 @@
 import { Boiler } from "../src/lib/boiler"
+import fs from "node:fs"
 
 const myBoiler: Boiler = {
   name: {
@@ -31,4 +32,8 @@ const myBoiler: Boiler = {
   }
 }
 
-console.log(Boiler.toYaml(myBoiler))
+fs.writeFileSync(
+  "public/boilers/my-boiler.yaml",
+  Boiler.toYaml(myBoiler),
+)
+console.log("Done!")

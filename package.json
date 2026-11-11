@@ -12,7 +12,7 @@
     "generate-index": "node ./scripts/generateBoilersIndex.js",
     "scripts:package.json": "node -e 'const fs = require(\"node:fs\"); fs.mkdirSync(\"build\", { recursive: true }); fs.writeFileSync( \"build/package.json\", JSON.stringify({ type: \"commonjs\" }, null, 2) + \"\\n\" ); console.log(\"package.json created\")'",
     "tsc": "tsc -p tsconfig.node.json --outDir build",
-    "hello": "npm run tsc && npm run scripts:package.json && node ./build/scripts/hello.js"
+    "my-boiler": "npm run tsc && npm run scripts:package.json && node ./build/scripts/my-boiler.js"
   },
   "keywords": [],
   "author": "",
