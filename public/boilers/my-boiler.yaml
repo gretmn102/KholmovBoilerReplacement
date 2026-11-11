@@ -4,16 +4,30 @@ name:
     Hott](https://hott.com.ua/p1001742026-shahtnyj-kotel-holmova.html/)
 power: 10
 frame:
-  height: 950
+  height:
+    value: 950
+    note: ""
   width: 465
   length: 600
 leg:
-  height: 40
+  height:
+    value: 40
+    note: ""
 chamber:
-  height: -1
+  height:
+    value: -1
+    note: ""
   width: 400
   length: 400
 chimney:
   diameter: 160
+  placed: back
+  position:
+    floor: 855
+    left: center
 waterOutlet:
   diameter: 59.62
+  placed: right
+  position:
+    floor: 95
+    left: 75

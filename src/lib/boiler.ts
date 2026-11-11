@@ -4,13 +4,22 @@ import { parse, stringify } from "yaml"
 export type BoilerId = string
 export type BoilerUrl = string
 
-export type ValueNote = {
-  value: string
+export type ValueNote<T> = {
+  value: T
   note: string
 }
 
+export namespace ValueNote {
+  export function create<T>(value: T, note = ""): ValueNote<T> {
+    return {
+      value,
+      note,
+    }
+  }
+}
+
 export type Size = {
-  height: number
+  height: ValueNote<number>
   width: Option<number>
   length: Option<number>
 }
@@ -31,7 +40,7 @@ export type Tube = {
 
 /** английские названия характеристик брал с https://www.ter-en.com/en/konstruktsiya/ktt */
 export type Boiler = {
-  name: ValueNote
+  name: ValueNote<string>
   /** Мощность в кВт */
   power: number
   /** Корпус */

@@ -1,4 +1,4 @@
-import { Boiler } from "../src/lib/boiler"
+import { Boiler, ValueNote } from "../src/lib/boiler"
 import fs from "node:fs"
 
 const myBoiler: Boiler = {
@@ -8,17 +8,17 @@ const myBoiler: Boiler = {
   },
   power: 10,
   frame: {
-    height: 950,
+    height: ValueNote.create(950),
     width: 465,
     length: 600,
   },
   leg: {
-    height: 40,
+    height: ValueNote.create(40),
     width: undefined,
     length: undefined,
   },
   chamber: {
-    height: -1,
+    height: ValueNote.create(-1),
     width: 400,
     length: 400,
   },
