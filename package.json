@@ -9,7 +9,10 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "test": "vitest",
-    "generate-index": "node ./scripts/generateBoilersIndex.js"
+    "generate-index": "node ./scripts/generateBoilersIndex.js",
+    "scripts:package.json": "node -e 'const fs = require(\"node:fs\"); fs.mkdirSync(\"build\", { recursive: true }); fs.writeFileSync( \"build/package.json\", JSON.stringify({ type: \"commonjs\" }, null, 2) + \"\\n\" ); console.log(\"package.json created\")'",
+    "tsc": "tsc -p tsconfig.node.json --outDir build",
+    "hello": "npm run tsc && npm run scripts:package.json && node ./build/scripts/hello.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +20,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.0.2",
     "@tsconfig/svelte": "^5.0.2",
+    "@types/node": "^26.6.6",
     "postcss": "~8.4.38",
     "rollup": "~4.14.1",
     "svelte": "^4.2.19",
