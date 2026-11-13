@@ -4,6 +4,7 @@
   import BoilersIndexFetch from "../../../components/BoilersIndexFetch.svelte"
   import Option from "../../../components/Option.svelte"
   import { BoilersIndex } from "../../../lib/boilersIndex"
+  import Boiler from "./Boiler.svelte"
 
   export let params: {
     id: BoilerId
@@ -15,7 +16,7 @@
 <BoilersIndexFetch let:boilersIndex>
   <Option result={BoilersIndex.getUrl(boilersIndex, id)} let:ok={url} context={`Not found url for ${id} id!`}>
     <BoilerFetch url={url} let:boiler>
-      {JSON.stringify(boiler, undefined, 2)}
+      <Boiler {boiler} />
     </BoilerFetch>
   </Option>
 </BoilersIndexFetch>

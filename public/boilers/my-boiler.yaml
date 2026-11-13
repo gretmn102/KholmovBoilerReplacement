@@ -1,0 +1,46 @@
+name:
+  value:
+    case: known
+    fields: Твердопаливний котел шахтного типу "Холмова" СТАНДАРТ
+  note: если верить [найденному котлу из магазина
+    Hott](https://hott.com.ua/p1001742026-shahtnyj-kotel-holmova.html/)
+power: 10
+frame:
+  height:
+    value:
+      case: known
+      fields: 950
+    note: ""
+  width: 465
+  length: 600
+leg:
+  height:
+    value:
+      case: known
+      fields: 40
+    note: ""
+chamber:
+  height:
+    value:
+      case: unknown
+    note: Не знаю, докуда мерить. Возможно, до решетки.
+  width: 400
+  length: 400
+chimney:
+  diameter: 160
+  placed: back
+  position:
+    floor: 855
+    left: center
+waterInlet:
+  diameter: 59.62
+  placed: right
+  position:
+    floor: 95
+    left: 75
+waterOutlet:
+  diameter: 59.62
+  placed: back
+  position:
+    floor: 925
+    left: 400
