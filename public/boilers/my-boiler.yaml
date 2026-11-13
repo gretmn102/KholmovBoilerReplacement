@@ -1,22 +1,29 @@
 name:
-  value: Титан-10
+  value:
+    case: known
+    fields: Титан-10
   note: если верить [найденному котлу из магазина
     Hott](https://hott.com.ua/p1001742026-shahtnyj-kotel-holmova.html/)
 power: 10
 frame:
   height:
-    value: 950
+    value:
+      case: known
+      fields: 950
     note: ""
   width: 465
   length: 600
 leg:
   height:
-    value: 40
+    value:
+      case: known
+      fields: 40
     note: ""
 chamber:
   height:
-    value: -1
-    note: ""
+    value:
+      case: unknown
+    note: Могу померить, но не знаю, докуда мерить. Возможно, до решетки.
   width: 400
   length: 400
 chimney:
