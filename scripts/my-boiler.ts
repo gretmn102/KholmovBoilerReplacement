@@ -3,7 +3,7 @@ import fs from "node:fs"
 
 const myBoiler: Boiler = {
   name: {
-    value: Value.create("Титан-10"),
+    value: Value.create("Твердопаливний котел шахтного типу \"Холмова\" СТАНДАРТ"),
     note: "если верить [найденному котлу из магазина Hott](https://hott.com.ua/p1001742026-shahtnyj-kotel-holmova.html/)",
   },
   power: 10,

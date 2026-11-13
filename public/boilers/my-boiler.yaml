@@ -1,7 +1,7 @@
 name:
   value:
     case: known
-    fields: Титан-10
+    fields: Твердопаливний котел шахтного типу "Холмова" СТАНДАРТ
   note: если верить [найденному котлу из магазина
     Hott](https://hott.com.ua/p1001742026-shahtnyj-kotel-holmova.html/)
 power: 10
