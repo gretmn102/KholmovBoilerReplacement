@@ -1,9 +1,9 @@
-import { Boiler, ValueNote } from "../src/lib/boiler"
+import { Boiler, Value, ValueNote } from "../src/lib/boiler"
 import fs from "node:fs"
 
 const myBoiler: Boiler = {
   name: {
-    value: "Титан-10",
+    value: Value.create("Титан-10"),
     note: "если верить [найденному котлу из магазина Hott](https://hott.com.ua/p1001742026-shahtnyj-kotel-holmova.html/)",
   },
   power: 10,
@@ -18,7 +18,7 @@ const myBoiler: Boiler = {
     length: undefined,
   },
   chamber: {
-    height: ValueNote.create(-1),
+    height: ValueNote.createUnknown("Могу померить, но не знаю, докуда мерить. Возможно, до решетки."),
     width: 400,
     length: 400,
   },

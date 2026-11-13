@@ -1,18 +1,63 @@
-import { Option, Result } from "@fering-org/functional-helper"
+import { Option, Result, UnionCase } from "@fering-org/functional-helper"
 import { parse, stringify } from "yaml"
+
+// refactor: use [feat(UnionCase): add `is` function](https://github.com/gretmn102/functional-helper/issues/15)
+export namespace UnionCaseExt {
+  export function is<Name, Value = undefined>(value: unknown): value is UnionCase<Name, Value> {
+    if (typeof value !== "object" || value === null) return false
+
+    const keys = Reflect.ownKeys(value)
+    return (
+      keys.length === 2 &&
+      keys.includes("case" as const satisfies keyof UnionCase<Name, Value>) &&
+      keys.includes("fields" as const satisfies keyof UnionCase<Name, Value>)
+    )
+  }
+}
 
 export type BoilerId = string
 export type BoilerUrl = string
 
+export type Value<T> =
+  | UnionCase<"known", T>
+  | UnionCase<"unknown">
+  | UnionCase<"undefined">
+
+export namespace Value {
+  export function create<T>(known: T): Value<T> {
+    return UnionCase.mkUnionCase("known", known)
+  }
+  export function createUnknown<T>(): Value<T> {
+    return UnionCase.mkEmptyUnionCase("unknown")
+  }
+  export function createUndefined<T>(): Value<T> {
+    return UnionCase.mkEmptyUnionCase("undefined")
+  }
+}
+
 export type ValueNote<T> = {
-  value: T
+  value: Value<T>
   note: string
 }
 
 export namespace ValueNote {
   export function create<T>(value: T, note = ""): ValueNote<T> {
     return {
-      value,
+      value: Value.create(value),
+      note,
+    }
+  }
+
+  export function createUnknown<T>(note = ""): ValueNote<T> {
+    return {
+      value: Value.createUnknown(),
+      note,
+    }
+  }
+
+  export function createUndefined<T>(note = ""): ValueNote<T> {
+    return {
+      value: Value.createUndefined(),
       note,
     }
   }
