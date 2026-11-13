@@ -133,7 +133,6 @@
       <H2>{title}</H2>
 
       <table class={concat([
-        "w-full",
         "border-collapse",
         "text-left",
       ])}>
