@@ -74,14 +74,14 @@
   function tubeRows(tube: Tube): Row[] {
     return [
       { label: "Диаметр", value: withUnit(tube.diameter, "мм"), note: "" },
-      { label: "Сторона", value: frameSideLabel[tube.placed], note: "" },
+      { label: "Сторона корпуса", value: frameSideLabel[tube.placed], note: "" },
       {
-        label: "Расстояние до пола",
+        label: "Расстояние от центра до пола",
         value: withUnit(tube.position.floor, "мм"),
         note: "",
       },
       {
-        label: "Расстояние до левой стенки корпуса",
+        label: "Расстояние от центра до левой стенки корпуса",
         value: tube.position.left === "center"
           ? "по центру"
           : withUnit(tube.position.left, "мм"),
