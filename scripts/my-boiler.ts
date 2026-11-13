@@ -18,7 +18,7 @@ const myBoiler: Boiler = {
     length: undefined,
   },
   chamber: {
-    height: ValueNote.createUnknown("Могу померить, но не знаю, докуда мерить. Возможно, до решетки."),
+    height: ValueNote.createUnknown("Не знаю, докуда мерить. Возможно, до решетки."),
     width: 400,
     length: 400,
   },
@@ -30,14 +30,22 @@ const myBoiler: Boiler = {
       left: "center",
     },
   },
-  waterOutlet: {
+  waterInlet: {
     diameter: 59.62,
     placed: "right",
     position: {
       floor: 95,
-      left: 75
+      left: 75,
     }
-  }
+  },
+  waterOutlet: {
+    diameter: 59.62,
+    placed: "back",
+    position: {
+      floor: 925,
+      left: 400,
+    }
+  },
 }
 
 fs.writeFileSync(

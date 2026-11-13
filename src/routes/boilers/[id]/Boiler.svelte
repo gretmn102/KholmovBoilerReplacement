@@ -95,6 +95,7 @@
     { title: "Ножки", rows: sizeRows(boiler.leg) },
     { title: "Загрузочная камера", rows: sizeRows(boiler.chamber) },
     { title: "Дымоход", rows: tubeRows(boiler.chimney) },
+    { title: "Патрубок подачи воды", rows: tubeRows(boiler.waterInlet) },
     { title: "Патрубок вывода воды", rows: tubeRows(boiler.waterOutlet) },
   ]
 </script>

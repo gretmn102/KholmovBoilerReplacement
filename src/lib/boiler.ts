@@ -98,6 +98,8 @@ export type Boiler = {
   chimney: Tube
   /** Патрубок вывода воды */
   waterOutlet: Tube
+  /** Патрубок подачи воды */
+  waterInlet: Tube
 }
 
 export namespace Boiler {
