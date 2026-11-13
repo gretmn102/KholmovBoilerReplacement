@@ -3,6 +3,7 @@
 
   import H1 from "../../../components/Content/H1.svelte"
   import H2 from "../../../components/Content/H2.svelte"
+  import Table from "../../../components/Content/Table.svelte"
   import Markdown from "../../../components/Markdown/Index.svelte"
   import {
     type Boiler,
@@ -132,10 +133,7 @@
     ])}>
       <H2>{title}</H2>
 
-      <table class={concat([
-        "border-collapse",
-        "text-left",
-      ])}>
+      <Table last={true}>
         <tbody>
           {#each rows as row}
             <tr class={concat([
@@ -174,7 +172,7 @@
             </tr>
           {/each}
         </tbody>
-      </table>
+      </Table>
     </section>
   {/each}
 </article>
