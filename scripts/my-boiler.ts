@@ -49,7 +49,7 @@ const myBoiler: Boiler = {
 }
 
 fs.writeFileSync(
-  "public/boilers/my-boiler.yaml",
+  "public/boilers/my-boiler/index.yaml",
   Boiler.toYaml(myBoiler),
 )
 console.log("Done!")
