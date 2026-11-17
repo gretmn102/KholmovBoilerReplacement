@@ -78,13 +78,13 @@ const heizerElite10: Boiler = {
   },
   leg: {
     height: ValueNote.createUnknown(),
-    width: undefined,
-    length: undefined,
+    width: ValueNote.createUndefined(),
+    length: ValueNote.createUndefined(),
   },
   chamber: {
     height: ValueNote.create(740),
-    width: 360,
-    length: 380,
+    width: ValueNote.create(360),
+    length: ValueNote.create(380),
   },
   chimney: {
     diameter: ValueNote.create(160, "доступно еще 130"),
