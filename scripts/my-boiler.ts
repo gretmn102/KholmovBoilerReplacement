@@ -1,7 +1,10 @@
-import { Boiler, Value, ValueNote } from "../src/lib/boiler"
 import fs from "node:fs"
+import { Option } from "@fering-org/functional-helper"
+
+import { Boiler, Value, ValueNote } from "../src/lib/boiler"
 
 const myBoiler: Boiler = {
+  dataPath: Option.mkNone(),
   name: {
     value: Value.create("Твердопаливний котел шахтного типу \"Холмова\" СТАНДАРТ"),
     note: "если верить [найденному котлу из магазина Hott](https://hott.com.ua/p1001742026-shahtnyj-kotel-holmova.html/)",
@@ -54,6 +57,7 @@ fs.writeFileSync(
 )
 
 const heizerElite10: Boiler = {
+  dataPath: Option.mkNone(),
   // todo:
   // ![характеристики](./haizer.jpg)
   // - Продавец: [Термоплюс](https://termoplus.com.ua/)

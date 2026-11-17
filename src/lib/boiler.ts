@@ -1,4 +1,4 @@
-import { Result, UnionCase } from "@fering-org/functional-helper"
+import { Result, UnionCase, type Option } from "@fering-org/functional-helper"
 import { parse, stringify } from "yaml"
 
 // refactor: use [feat(UnionCase): add `is` function](https://github.com/gretmn102/functional-helper/issues/15)
@@ -109,7 +109,7 @@ export type Boiler = {
 }
 
 export namespace Boiler {
-  export function fromYaml(yaml: string): Result<Boiler, string> {
+  export function fromYaml(yaml: string, dataPath: Boiler["dataPath"]): Result<Boiler, string> {
     try {
       return Result.mkOk(parse(yaml))
     } catch (error) {
