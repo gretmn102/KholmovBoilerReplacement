@@ -22,10 +22,10 @@ export namespace BoilersIndex {
     }
   }
 
-  export function getUrl(index: BoilersIndex, id: BoilerId) {
+  export function getPath(index: BoilersIndex, id: BoilerId) {
     const path = index.get(id)
     if (path === undefined)
       return
-    return BoilerPath.toUrl(path)
+    return path
   }
 }
