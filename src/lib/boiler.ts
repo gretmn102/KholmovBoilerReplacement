@@ -85,7 +85,13 @@ export type Tube = {
 
 /** английские названия характеристик брал с https://www.ter-en.com/en/konstruktsiya/ktt */
 export type Boiler = {
+  /** Локальный путь к файлу с данными. Например:
+   * * `my-boiler/index.yaml`
+   * * `some-boiler.yaml`
+   */
+  dataPath: Option<string>
   name: ValueNote<string>
+  images: string[]
   /** Мощность в кВт */
   power: number
   /** Корпус */
