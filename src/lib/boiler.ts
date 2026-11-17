@@ -119,7 +119,7 @@ export type Boiler = {
 export namespace Boiler {
   export function fromYaml(yaml: string, dataPath: Boiler["dataPath"]): Result<Boiler, string> {
     try {
-      return Result.mkOk(parse(yaml))
+      return Result.mkOk({ ...parse(yaml), dataPath })
     } catch (error) {
       return Result.mkError((error as Error).message)
     }
