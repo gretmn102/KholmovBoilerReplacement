@@ -1,4 +1,4 @@
-import { Option, Result, UnionCase } from "@fering-org/functional-helper"
+import { Result, UnionCase } from "@fering-org/functional-helper"
 import { parse, stringify } from "yaml"
 
 // refactor: use [feat(UnionCase): add `is` function](https://github.com/gretmn102/functional-helper/issues/15)
@@ -65,21 +65,21 @@ export namespace ValueNote {
 
 export type Size = {
   height: ValueNote<number>
-  width: Option<number>
-  length: Option<number>
+  width: ValueNote<number>
+  length: ValueNote<number>
 }
 
 export type FrameSide = "front" | "left" | "right" | "back"
 
 export type Tube = {
-  diameter: number
+  diameter: ValueNote<number>
   placed: FrameSide
   // /** расстояние от центра патрубка к чему-то */
   position: {
     /** к низу пола */
-    floor: number
+    floor: ValueNote<number>
     /** к левой стенке корпуса */
-    left: number | "center"
+    left: ValueNote<number> | "center"
   }
 }
 

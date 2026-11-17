@@ -1,0 +1,96 @@
+name:
+  value:
+    case: known
+    fields: KesselHeizer Elite 10
+  note: "[heizer-komforthause](https://termoplus.com.ua/production/heizer-komfort\
+    hause/)"
+power: 10
+frame:
+  height:
+    value:
+      case: unknown
+    note: ""
+  width:
+    value:
+      case: unknown
+    note: ""
+  length:
+    value:
+      case: unknown
+    note: ""
+leg:
+  height:
+    value:
+      case: unknown
+    note: ""
+  width:
+    value:
+      case: undefined
+    note: ""
+  length:
+    value:
+      case: undefined
+    note: ""
+chamber:
+  height:
+    value:
+      case: known
+      fields: 740
+    note: ""
+  width:
+    value:
+      case: known
+      fields: 360
+    note: ""
+  length:
+    value:
+      case: known
+      fields: 380
+    note: ""
+chimney:
+  diameter:
+    value:
+      case: known
+      fields: 160
+    note: доступно еще 130
+  placed: back
+  position:
+    floor:
+      value:
+        case: known
+        fields: 800
+      note: "Написали в ЛС: «Зможемо зробити під замовлення потрібну висоту +1000 грн.
+        чекати 3 тижні орієнтовно»"
+    left: center
+waterInlet:
+  diameter:
+    value:
+      case: known
+      fields: 40
+    note: Взято из «диаметр патрубков соединений»
+  placed: right
+  position:
+    floor:
+      value:
+        case: unknown
+      note: ""
+    left:
+      value:
+        case: unknown
+      note: ""
+waterOutlet:
+  diameter:
+    value:
+      case: known
+      fields: 40
+    note: Взято из «диаметр патрубков соединений»
+  placed: back
+  position:
+    floor:
+      value:
+        case: unknown
+      note: ""
+    left:
+      value:
+        case: unknown
+      note: ""
