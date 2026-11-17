@@ -91,6 +91,15 @@ export type Boiler = {
    */
   dataPath: Option<string>
   name: ValueNote<string>
+  /** Пути к изображениям задаются относительно `datePath`.
+   *
+   * Допустим, есть поле `dataPath` со значением `my-boiler/index.yaml`. В папке `my-boiler/images` есть файл `image.png`. В поле `images` он определен относительно — `images/image.png`. Абсолютный путь определяется так:
+   *
+   * 1. Вернуть папку из `my-boiler/index.yaml`, получится `my-boiler`
+   * 2. `my-boiler` + `/` + `images/image.png`
+   *
+  */
+  images: string[]
   /** Мощность в кВт */
   power: number
   /** Корпус */

@@ -1,6 +1,7 @@
 <script lang="ts">
   import H1 from "../../../components/Content/H1.svelte"
   import H2 from "../../../components/Content/H2.svelte"
+  import Image from "../../../components/Content/Image.svelte"
   import Table from "../../../components/Content/Table.svelte"
   import Markdown from "../../../components/Markdown/Index.svelte"
   import {
@@ -11,6 +12,7 @@
     type Value,
     type ValueNote,
   } from "../../../lib/boiler"
+  import { BoilerPath } from "../../../lib/boilersIndex"
   import { concat } from "../../../lib/utils"
 
   export let boiler: Boiler
@@ -74,6 +76,12 @@
     ]
   }
 
+  function imageUrl(image: string): string {
+    return boiler.dataPath === undefined
+      ? BoilerPath.toUrl(image)
+      : BoilerPath.toImageUrl(boiler.dataPath, image)
+  }
+
   $: sections = [
     { title: "Корпус", rows: sizeRows(boiler.frame) },
     { title: "Ножки", rows: sizeRows(boiler.leg) },
@@ -111,6 +119,25 @@
       ])}>{boiler.power} кВт</span>
     </p>
   </header>
+
+  {#if boiler.images.length > 0}
+    <section class={concat([
+      "space-y-2",
+    ])}>
+      <H2>Изображения</H2>
+
+      <div class={concat([
+        "grid",
+        "grid-cols-1",
+        "sm:grid-cols-2",
+        "gap-4",
+      ])}>
+        {#each boiler.images as image}
+          <Image src={imageUrl(image)} alt="Котёл" />
+        {/each}
+      </div>
+    </section>
+  {/if}
 
   {#each sections as { title, rows }}
     <section class={concat([
