@@ -9,6 +9,12 @@ const myBoiler: Boiler = {
     value: Value.create("Твердопаливний котел шахтного типу \"Холмова\" СТАНДАРТ"),
     note: "если верить [найденному котлу из магазина Hott](https://hott.com.ua/p1001742026-shahtnyj-kotel-holmova.html/)",
   },
+  images: [
+    "images/all.webp",
+    "images/front.webp",
+    "images/right.webp",
+    "images/back.webp",
+  ],
   power: 10,
   frame: {
     height: ValueNote.create(950),
@@ -66,6 +72,7 @@ const heizerElite10: Boiler = {
     value: Value.create("KesselHeizer Elite 10"),
     note: "[heizer-komforthause](https://termoplus.com.ua/production/heizer-komforthause/)",
   },
+  images: [],
   power: 10,
   // todo: толщина стенок: 5 (доступны еще 4 и 6)
   // todo: price: 44990 грн — это за 5мм толщины (в ЛС указано)

@@ -4,6 +4,11 @@ name:
     fields: Твердопаливний котел шахтного типу "Холмова" СТАНДАРТ
   note: если верить [найденному котлу из магазина
     Hott](https://hott.com.ua/p1001742026-shahtnyj-kotel-holmova.html/)
+images:
+  - images/all.webp
+  - images/front.webp
+  - images/right.webp
+  - images/back.webp
 power: 10
 frame:
   height:
