@@ -9,41 +9,41 @@ const myBoiler: Boiler = {
   power: 10,
   frame: {
     height: ValueNote.create(950),
-    width: 465,
-    length: 600,
+    width: ValueNote.create(465),
+    length: ValueNote.create(600),
   },
   leg: {
     height: ValueNote.create(40),
-    width: undefined,
-    length: undefined,
+    width: ValueNote.createUndefined(),
+    length: ValueNote.createUndefined(),
   },
   chamber: {
     height: ValueNote.createUnknown("Не знаю, докуда мерить. Возможно, до решетки."),
-    width: 400,
-    length: 400,
+    width: ValueNote.create(400),
+    length: ValueNote.create(400),
   },
   chimney: {
-    diameter: 160,
+    diameter: ValueNote.create(160),
     placed: "back",
     position: {
-      floor: 855,
+      floor: ValueNote.create(855),
       left: "center",
     },
   },
   waterInlet: {
-    diameter: 59.62,
+    diameter: ValueNote.create(59.62),
     placed: "right",
     position: {
-      floor: 95,
-      left: 75,
+      floor: ValueNote.create(95),
+      left: ValueNote.create(75),
     }
   },
   waterOutlet: {
-    diameter: 59.62,
+    diameter: ValueNote.create(59.62),
     placed: "back",
     position: {
-      floor: 925,
-      left: 400,
+      floor: ValueNote.create(925),
+      left: ValueNote.create(400),
     }
   },
 }
@@ -114,7 +114,7 @@ const heizerElite10: Boiler = {
 
 fs.writeFileSync(
   "public/boilers/heizer-elite-10.yaml",
-  Boiler.toYaml(myBoiler),
+  Boiler.toYaml(heizerElite10),
 )
 
 console.log("Done!")

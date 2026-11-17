@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { type Option } from "@fering-org/functional-helper"
-
   import H1 from "../../../components/Content/H1.svelte"
   import H2 from "../../../components/Content/H2.svelte"
   import Table from "../../../components/Content/Table.svelte"
@@ -55,38 +53,24 @@
     }
   }
 
-  function optionRow(label: string, option: Option<number>, unit = ""): Row {
-    return {
-      label,
-      value: option === undefined ? "не указано" : withUnit(option, unit),
-      note: "",
-    }
-  }
-
   function sizeRows(size: Size): Row[] {
     return [
       valueNoteRow("Высота", size.height, "мм"),
-      optionRow("Ширина", size.width, "мм"),
-      optionRow("Длина", size.length, "мм"),
+      valueNoteRow("Ширина", size.width, "мм"),
+      valueNoteRow("Длина", size.length, "мм"),
     ]
   }
 
   function tubeRows(tube: Tube): Row[] {
+    const leftLabel = "Расстояние от центра до левой стенки корпуса"
+
     return [
-      { label: "Диаметр", value: withUnit(tube.diameter, "мм"), note: "" },
+      valueNoteRow("Диаметр", tube.diameter, "мм"),
       { label: "Сторона корпуса", value: frameSideLabel[tube.placed], note: "" },
-      {
-        label: "Расстояние от центра до пола",
-        value: withUnit(tube.position.floor, "мм"),
-        note: "",
-      },
-      {
-        label: "Расстояние от центра до левой стенки корпуса",
-        value: tube.position.left === "center"
-          ? "по центру"
-          : withUnit(tube.position.left, "мм"),
-        note: "",
-      },
+      valueNoteRow("Расстояние от центра до пола", tube.position.floor, "мм"),
+      tube.position.left === "center"
+        ? { label: leftLabel, value: "по центру", note: "" }
+        : valueNoteRow(leftLabel, tube.position.left, "мм"),
     ]
   }
 
