@@ -11,36 +11,92 @@ frame:
       case: known
       fields: 950
     note: ""
-  width: 465
-  length: 600
+  width:
+    value:
+      case: known
+      fields: 465
+    note: ""
+  length:
+    value:
+      case: known
+      fields: 600
+    note: ""
 leg:
   height:
     value:
       case: known
       fields: 40
     note: ""
+  width:
+    value:
+      case: undefined
+    note: ""
+  length:
+    value:
+      case: undefined
+    note: ""
 chamber:
   height:
     value:
       case: unknown
     note: Не знаю, докуда мерить. Возможно, до решетки.
-  width: 400
-  length: 400
+  width:
+    value:
+      case: known
+      fields: 400
+    note: ""
+  length:
+    value:
+      case: known
+      fields: 400
+    note: ""
 chimney:
-  diameter: 160
+  diameter:
+    value:
+      case: known
+      fields: 160
+    note: ""
   placed: back
   position:
-    floor: 855
+    floor:
+      value:
+        case: known
+        fields: 855
+      note: ""
     left: center
 waterInlet:
-  diameter: 59.62
+  diameter:
+    value:
+      case: known
+      fields: 59.62
+    note: ""
   placed: right
   position:
-    floor: 95
-    left: 75
+    floor:
+      value:
+        case: known
+        fields: 95
+      note: ""
+    left:
+      value:
+        case: known
+        fields: 75
+      note: ""
 waterOutlet:
-  diameter: 59.62
+  diameter:
+    value:
+      case: known
+      fields: 59.62
+    note: ""
   placed: back
   position:
-    floor: 925
-    left: 400
+    floor:
+      value:
+        case: known
+        fields: 925
+      note: ""
+    left:
+      value:
+        case: known
+        fields: 400
+      note: ""
