@@ -14,8 +14,12 @@
 </script>
 
 <BoilersIndexFetch let:boilersIndex>
-  <Option result={BoilersIndex.getUrl(boilersIndex, id)} let:ok={url} context={`Not found url for ${id} id!`}>
-    <BoilerFetch url={url} let:boiler>
+  <Option
+    result={BoilersIndex.getPath(boilersIndex, id)}
+    let:ok={url}
+    context={`Not found path for ${id} id!`}
+  >
+    <BoilerFetch path={url} let:boiler>
       <Boiler {boiler} />
     </BoilerFetch>
   </Option>

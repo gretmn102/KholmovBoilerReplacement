@@ -19,7 +19,7 @@
     ])}>
       {#each [...boilersIndex] as [id, path]}
         <li>
-          <BoilerFetch url={BoilerPath.toUrl(path)} let:boiler>
+          <BoilerFetch path={path} let:boiler>
             <Item id={id} boiler={boiler} />
           </BoilerFetch>
         </li>
