@@ -34,22 +34,26 @@
   }
 
   function handleKeydown(event: KeyboardEvent) {
-    if (event.key === "ArrowRight") next()
-    if (event.key === "ArrowLeft") previous()
+    if (event.key === "ArrowRight") {
+      event.preventDefault()
+      next()
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault()
+      previous()
+    }
   }
 </script>
 
 {#if slides.length > 0}
   <section
     class="mx-auto w-full max-w-3xl"
-    role="region"
     aria-roledescription="карусель"
     aria-label="Галерея изображений"
-    on:keydown={handleKeydown}
-    tabindex="0"
   >
     <div
-      class="overflow-hidden rounded-xl"
+      class="overflow-hidden rounded-xl touch-pan-y"
       on:pointerdown={handlePointerDown}
       on:pointerup={handlePointerUp}
     >
@@ -77,6 +81,7 @@
         class="rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
         aria-label="Предыдущее изображение"
         on:click={previous}
+        on:keydown={handleKeydown}
       >
         Назад
       </button>
@@ -90,6 +95,7 @@
         class="rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
         aria-label="Следующее изображение"
         on:click={next}
+        on:keydown={handleKeydown}
       >
         Далее
       </button>
@@ -105,6 +111,7 @@
           aria-label={`Перейти к изображению ${i + 1}`}
           aria-current={i === current ? "true" : undefined}
           on:click={() => (current = i)}
+          on:keydown={handleKeydown}
         />
       {/each}
     </div>
