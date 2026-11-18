@@ -40,6 +40,19 @@ leg:
     value:
       case: undefined
     note: ""
+dimensions:
+  height:
+    value:
+      case: undefined
+    note: ""
+  width:
+    value:
+      case: undefined
+    note: ""
+  length:
+    value:
+      case: undefined
+    note: ""
 chamber:
   height:
     value:
