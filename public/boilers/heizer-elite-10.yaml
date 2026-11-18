@@ -6,6 +6,22 @@ name:
     hause/)"
 images: []
 power: 10
+dimensions:
+  height:
+    value:
+      case: known
+      fields: 950
+    note: ""
+  width:
+    value:
+      case: known
+      fields: 520
+    note: ""
+  length:
+    value:
+      case: known
+      fields: 640
+    note: ""
 frame:
   height:
     value:
