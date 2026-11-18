@@ -26,6 +26,11 @@ const myBoiler: Boiler = {
     width: ValueNote.createUndefined(),
     length: ValueNote.createUndefined(),
   },
+  dimensions: {
+    height: ValueNote.createUndefined(),
+    width: ValueNote.createUndefined(),
+    length: ValueNote.createUndefined(),
+  },
   chamber: {
     height: ValueNote.createUnknown("Не знаю, докуда мерить. Возможно, до решетки."),
     width: ValueNote.create(400),
@@ -76,12 +81,11 @@ const heizerElite10: Boiler = {
   power: 10,
   // todo: толщина стенок: 5 (доступны еще 4 и 6)
   // todo: price: 44990 грн — это за 5мм толщины (в ЛС указано)
-  // todo:
-  // габариты: {
-  //   height: ValueNote.create(950),
-  //   width: 520,
-  //   length: 640,
-  // },
+  dimensions: {
+    height: ValueNote.create(950),
+    width: ValueNote.create(520),
+    length: ValueNote.create(640),
+  },
   frame: {
     height: ValueNote.createUnknown(),
     width: ValueNote.createUnknown(),
