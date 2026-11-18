@@ -124,8 +124,6 @@
     <section class={concat([
       "space-y-2",
     ])}>
-      <H2>Изображения</H2>
-
       <div class={concat([
         "flex",
         "overflow-auto",
