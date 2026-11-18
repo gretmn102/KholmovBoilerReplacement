@@ -1,9 +1,9 @@
 <script lang="ts">
   import H1 from "../../../components/Content/H1.svelte"
   import H2 from "../../../components/Content/H2.svelte"
-  import Image from "../../../components/Content/Image.svelte"
   import Table from "../../../components/Content/Table.svelte"
   import Markdown from "../../../components/Markdown/Index.svelte"
+  import Carousel from "../../../components/Carousel.svelte"
   import {
     type Boiler,
     type FrameSide,
@@ -124,17 +124,19 @@
     <section class={concat([
       "space-y-2",
     ])}>
-      <H2>Изображения</H2>
-
       <div class={concat([
-        "grid",
-        "grid-cols-1",
-        "sm:grid-cols-2",
-        "gap-4",
+        "flex",
+        "overflow-auto",
+        "mx-auto",
+        "size-full",
+        "h-96",
+        "max-w-[500px]",
       ])}>
-        {#each boiler.images as image}
-          <Image src={imageUrl(image)} alt="Котёл" />
-        {/each}
+        <Carousel slides={(() =>
+          boiler.images.map(path => ({
+            src: imageUrl(path),
+          }))
+        )()} />
       </div>
     </section>
   {/if}
