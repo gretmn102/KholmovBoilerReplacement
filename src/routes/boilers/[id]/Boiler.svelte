@@ -1,9 +1,9 @@
 <script lang="ts">
   import H1 from "../../../components/Content/H1.svelte"
   import H2 from "../../../components/Content/H2.svelte"
-  import Image from "../../../components/Content/Image.svelte"
   import Table from "../../../components/Content/Table.svelte"
   import Markdown from "../../../components/Markdown/Index.svelte"
+  import Carousel from "../../../components/Carousel.svelte"
   import {
     type Boiler,
     type FrameSide,
@@ -132,9 +132,12 @@
         "sm:grid-cols-2",
         "gap-4",
       ])}>
-        {#each boiler.images as image}
-          <Image src={imageUrl(image)} alt="Котёл" />
-        {/each}
+        <Carousel slides={(() =>
+          boiler.images.map(path => ({
+            src: imageUrl(path),
+            alt: "Котел",
+          }))
+        )()} />
       </div>
     </section>
   {/if}
