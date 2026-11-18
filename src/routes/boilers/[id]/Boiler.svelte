@@ -86,6 +86,7 @@
     { title: "Корпус", rows: sizeRows(boiler.frame) },
     { title: "Ножки", rows: sizeRows(boiler.leg) },
     { title: "Загрузочная камера", rows: sizeRows(boiler.chamber) },
+    { title: "Габаритные размеры", rows: sizeRows(boiler.dimensions) },
     { title: "Дымоход", rows: tubeRows(boiler.chimney) },
     { title: "Патрубок подачи воды", rows: tubeRows(boiler.waterInlet) },
     { title: "Патрубок вывода воды", rows: tubeRows(boiler.waterOutlet) },
