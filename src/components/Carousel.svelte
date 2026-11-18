@@ -62,11 +62,11 @@
         style={`transform: translateX(-${current * 100}%)`}
       >
         {#each slides as slide, i}
-          <div class="w-full shrink-0">
+          <div class="size-full shrink-0">
             <img
               src={slide.src}
               alt={slide.alt}
-              class="block aspect-video w-full select-none object-cover"
+              class="aspect-square self-center object-contain object-center select-none"
               draggable="false"
               loading={i === 0 ? "eager" : "lazy"}
             />
