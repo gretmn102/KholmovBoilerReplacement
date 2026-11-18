@@ -127,10 +127,12 @@
       <H2>Изображения</H2>
 
       <div class={concat([
-        "grid",
-        "grid-cols-1",
-        "sm:grid-cols-2",
-        "gap-4",
+        "flex",
+        "overflow-auto",
+        "mx-auto",
+        "size-full",
+        "h-96",
+        "max-w-[500px]",
       ])}>
         <Carousel slides={(() =>
           boiler.images.map(path => ({

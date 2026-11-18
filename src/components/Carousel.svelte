@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { concat } from "../lib/utils"
+
   type Slide = {
     src: string
     alt: string
@@ -48,26 +50,58 @@
 
 {#if slides.length > 0}
   <section
-    class="mx-auto w-full max-w-3xl"
+    class={concat([
+      "size-full",
+      "overflow-y-auto",
+      "flex",
+      "flex-col",
+    ])}
     aria-roledescription="карусель"
     aria-label="Галерея изображений"
   >
-    <div class="relative">
+    <div class={concat([
+      "size-full",
+      "relative",
+      "flex",
+      "overflow-y-auto",
+    ])}>
       <div
-        class="overflow-hidden rounded-xl touch-pan-y"
+        class={concat([
+          "overflow-auto",
+          "size-full",
+          "flex",
+          "rounded-xl",
+          "touch-pan-y",
+          "overflow-hidden",
+        ])}
         on:pointerdown={handlePointerDown}
         on:pointerup={handlePointerUp}
       >
         <div
-          class="flex transition-transform duration-300 ease-in-out"
+          class={concat([
+            "size-full",
+            "flex",
+            "transition-transform",
+            "duration-300",
+            "ease-in-out",
+          ])}
           style={`transform: translateX(-${current * 100}%)`}
         >
           {#each slides as slide, i}
-            <div class="size-full shrink-0">
+            <div class={concat([
+              "w-full",
+              "shrink-0",
+              "flex",
+              "justify-center",
+            ])}>
               <img
                 src={slide.src}
                 alt={slide.alt}
-                class="aspect-square self-center object-contain object-center select-none"
+                class={concat([
+                  "h-full",
+                  "object-contain",
+                  "select-none",
+                ])}
                 draggable="false"
                 loading={i === 0 ? "eager" : "lazy"}
               />
