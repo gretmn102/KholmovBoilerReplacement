@@ -135,7 +135,6 @@
         <Carousel slides={(() =>
           boiler.images.map(path => ({
             src: imageUrl(path),
-            alt: "Котел",
           }))
         )()} />
       </div>

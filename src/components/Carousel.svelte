@@ -1,9 +1,11 @@
 <script lang="ts">
   import { concat } from "../lib/utils"
+  import H3 from "./Content/H3.svelte"
 
   type Slide = {
     src: string
-    alt: string
+    alt?: string
+    title?: string
   }
 
   export let slides: Slide[] = []
@@ -92,8 +94,13 @@
               "w-full",
               "shrink-0",
               "flex",
+              "flex-col",
               "justify-center",
+              "items-center",
             ])}>
+              {#if slide.title}
+                <H3>{slide.title}</H3>
+              {/if}
               <img
                 src={slide.src}
                 alt={slide.alt}
