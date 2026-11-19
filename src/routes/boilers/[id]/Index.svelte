@@ -4,7 +4,7 @@
   import BoilersIndexFetch from "../../../components/BoilersIndexFetch.svelte"
   import Option from "../../../components/Option.svelte"
   import { BoilersIndex } from "../../../lib/boilersIndex"
-  import Boiler from "./Boiler.svelte"
+  import Boiler from "../../../components/Boiler.svelte"
 
   export let params: {
     id: BoilerId
