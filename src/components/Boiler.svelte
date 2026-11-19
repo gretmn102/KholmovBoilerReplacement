@@ -1,10 +1,10 @@
 <script lang="ts">
-  import H1 from "../../../components/Content/H1.svelte"
-  import H2 from "../../../components/Content/H2.svelte"
-  import Table from "../../../components/Content/Table.svelte"
-  import Markdown from "../../../components/Markdown/Index.svelte"
-  import Carousel from "../../../components/Carousel.svelte"
-  import Link from "../../../components/Content/Link.svelte"
+  import H1 from "./Content/H1.svelte"
+  import H2 from "./Content/H2.svelte"
+  import Table from "./Content/Table.svelte"
+  import Markdown from "./Markdown/Index.svelte"
+  import Carousel from "./Carousel.svelte"
+  import Link from "./Content/Link.svelte"
   import {
     type Boiler,
     type FrameSide,
@@ -13,9 +13,9 @@
     type Tube,
     type Value,
     type ValueNote,
-  } from "../../../lib/boiler"
-  import { BoilerPath } from "../../../lib/boilersIndex"
-  import { concat } from "../../../lib/utils"
+  } from "../lib/boiler"
+  import { BoilerPath } from "../lib/boilersIndex"
+  import { concat } from "../lib/utils"
 
   export let boiler: Boiler
 
