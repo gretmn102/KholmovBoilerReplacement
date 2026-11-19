@@ -75,7 +75,7 @@
 
   function sellerRows(seller: Seller): Row[] {
     return [
-      valueNoteRow("Цена (грн)", seller.price),
+      valueNoteRow("Цена", seller.price, "грн"),
       sellerUrlRow(seller.url),
       {
         label: "Наличие",
