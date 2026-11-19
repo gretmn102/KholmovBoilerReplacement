@@ -15,6 +15,14 @@ const myBoiler: Boiler = {
     "images/right.webp",
     "images/back.webp",
   ],
+  sellers: [
+    {
+      name: "Hott",
+      price: ValueNote.create(13300),
+      url: ValueNote.create("https://hott.com.ua/p1001742026-shahtnyj-kotel-holmova.html/"),
+      available: ValueNote.create(false, "Написал им на почту 07.10.2026 — не отвечают (12.10.2026)"),
+    },
+  ],
   power: 10,
   frame: {
     height: ValueNote.create(950),
@@ -69,18 +77,23 @@ fs.writeFileSync(
 
 const heizerElite10: Boiler = {
   dataPath: Option.mkNone(),
-  // todo:
-  // ![характеристики](./haizer.jpg)
-  // - Продавец: [Термоплюс](https://termoplus.com.ua/)
-  // - Ссылка: [heizer-komforthause](https://termoplus.com.ua/production/heizer-komforthause/)
   name: {
     value: Value.create("KesselHeizer Elite 10"),
     note: "[heizer-komforthause](https://termoplus.com.ua/production/heizer-komforthause/)",
   },
-  images: [],
+  images: [
+    // todo: ![характеристики](./haizer.jpg)
+  ],
+  sellers: [
+    {
+      name: "Термоплюс",
+      price: ValueNote.create(44990, "за 5мм толщины (в ЛС указано)"),
+      url: ValueNote.create("https://termoplus.com.ua/production/heizer-komforthause/"),
+      available: ValueNote.create(true),
+    },
+  ],
   power: 10,
   // todo: толщина стенок: 5 (доступны еще 4 и 6)
-  // todo: price: 44990 грн — это за 5мм толщины (в ЛС указано)
   dimensions: {
     height: ValueNote.create(950),
     width: ValueNote.create(520),

@@ -5,6 +5,23 @@ name:
   note: "[heizer-komforthause](https://termoplus.com.ua/production/heizer-komfort\
     hause/)"
 images: []
+sellers:
+  - name: Термоплюс
+    price:
+      value:
+        case: known
+        fields: 44990
+      note: за 5мм толщины (в ЛС указано)
+    url:
+      value:
+        case: known
+        fields: https://termoplus.com.ua/production/heizer-komforthause/
+      note: ""
+    available:
+      value:
+        case: known
+        fields: true
+      note: ""
 power: 10
 dimensions:
   height:

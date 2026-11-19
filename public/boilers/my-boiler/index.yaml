@@ -9,6 +9,23 @@ images:
   - images/front.webp
   - images/right.webp
   - images/back.webp
+sellers:
+  - name: Hott
+    price:
+      value:
+        case: known
+        fields: 13300
+      note: ""
+    url:
+      value:
+        case: known
+        fields: https://hott.com.ua/p1001742026-shahtnyj-kotel-holmova.html/
+      note: ""
+    available:
+      value:
+        case: known
+        fields: false
+      note: Написал им на почту 07.10.2026 — не отвечают (12.10.2026)
 power: 10
 frame:
   height:

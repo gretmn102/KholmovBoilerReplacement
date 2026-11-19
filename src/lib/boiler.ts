@@ -85,7 +85,7 @@ export type Tube = {
 
 export type Seller = {
   name: string
-  price: ValueNote<string>
+  price: ValueNote<number>
   /** ссылка на карточку в онлайн-магазине (если такая есть) */
   url: ValueNote<string>
   available: ValueNote<boolean>
@@ -108,7 +108,7 @@ export type Boiler = {
    *
   */
   images: string[]
-  sellers: Seller[],
+  sellers: Seller[]
   /** Мощность в кВт */
   power: number
   /** Корпус */
