@@ -4,9 +4,11 @@
   import Table from "../../../components/Content/Table.svelte"
   import Markdown from "../../../components/Markdown/Index.svelte"
   import Carousel from "../../../components/Carousel.svelte"
+  import Link from "../../../components/Content/Link.svelte"
   import {
     type Boiler,
     type FrameSide,
+    type Seller,
     type Size,
     type Tube,
     type Value,
@@ -21,6 +23,7 @@
     label: string
     value: string
     note: string
+    href?: string
   }
 
   const frameSideLabel: Record<FrameSide, string> = {
@@ -55,6 +58,33 @@
     }
   }
 
+  function formatBoolean(value: Value<boolean>): string {
+    return value.case === "known"
+      ? (value.fields ? "да" : "нет")
+      : formatValue(value)
+  }
+
+  function sellerUrlRow(valueNote: ValueNote<string>): Row {
+    return {
+      label: "Ссылка",
+      value: valueNote.value.case === "known" ? "карточка" : formatValue(valueNote.value),
+      note: valueNote.note,
+      href: valueNote.value.case === "known" ? valueNote.value.fields : undefined,
+    }
+  }
+
+  function sellerRows(seller: Seller): Row[] {
+    return [
+      valueNoteRow("Цена (грн)", seller.price),
+      sellerUrlRow(seller.url),
+      {
+        label: "Наличие",
+        value: formatBoolean(seller.available.value),
+        note: seller.available.note,
+      },
+    ]
+  }
+
   function sizeRows(size: Size): Row[] {
     return [
       valueNoteRow("Высота", size.height, "мм"),
@@ -83,6 +113,10 @@
   }
 
   $: sections = [
+    ...boiler.sellers.map(seller => ({
+      title: `Продавец: ${seller.name}`,
+      rows: sellerRows(seller),
+    })),
     { title: "Корпус", rows: sizeRows(boiler.frame) },
     { title: "Ножки", rows: sizeRows(boiler.leg) },
     { title: "Загрузочная камера", rows: sizeRows(boiler.chamber) },
@@ -173,7 +207,11 @@
               <td class={concat([
                 "py-1",
               ])}>
-                {row.value}
+                {#if row.href}
+                  <Link href={row.href}>{row.value}</Link>
+                {:else}
+                  {row.value}
+                {/if}
                 {#if row.note}
                   <div class={concat([
                     "text-sm",

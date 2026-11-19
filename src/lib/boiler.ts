@@ -83,6 +83,14 @@ export type Tube = {
   }
 }
 
+export type Seller = {
+  name: string
+  price: ValueNote<number>
+  /** ссылка на карточку в онлайн-магазине (если такая есть) */
+  url: ValueNote<string>
+  available: ValueNote<boolean>
+}
+
 /** английские названия характеристик брал с https://www.ter-en.com/en/konstruktsiya/ktt */
 export type Boiler = {
   /** Локальный путь к файлу с данными. Например:
@@ -100,6 +108,7 @@ export type Boiler = {
    *
   */
   images: string[]
+  sellers: Seller[]
   /** Мощность в кВт */
   power: number
   /** Корпус */
