@@ -6,7 +6,7 @@
   import Carousel from "./Carousel.svelte"
   import Link from "./Content/Link.svelte"
   import {
-    type Boiler,
+    Boiler,
     type FrameSide,
     type Seller,
     type Size,
@@ -24,6 +24,7 @@
     value: string
     note: string
     href?: string
+    valueClass?: string
   }
 
   const frameSideLabel: Record<FrameSide, string> = {
@@ -106,6 +107,44 @@
     ]
   }
 
+  function dimensionRows(boiler: Boiler): Row[] {
+    const computed = Boiler.computeDimensions(boiler)
+    const dims: [string, ValueNote<number>, ValueNote<number>][] = [
+      ["Высота", boiler.dimensions.height, computed.height],
+      ["Ширина", boiler.dimensions.width, computed.width],
+      ["Длина", boiler.dimensions.length, computed.length],
+    ]
+
+    return dims.map(([label, specified, computedValue]) => {
+      if (specified.value.case === "known") {
+        if (computedValue.value.case === "known") {
+          const s = specified.value.fields
+          const c = computedValue.value.fields
+          if (s === c) {
+            return { label, value: withUnit(String(s), "мм"), note: specified.note }
+          }
+          return {
+            label,
+            value: `${withUnit(String(s), "мм")} - ${withUnit(String(c), "мм")} = ${withUnit(String(s - c), "мм")}`,
+            note: specified.note,
+            valueClass: "text-red-600 dark:text-red-400",
+          }
+        }
+        return valueNoteRow(label, specified, "мм")
+      }
+
+      if (computedValue.value.case === "known") {
+        return {
+          label,
+          value: `${withUnit(String(computedValue.value.fields), "мм")} (вычислено)`,
+          note: specified.note,
+        }
+      }
+
+      return valueNoteRow(label, specified, "мм")
+    })
+  }
+
   function imageUrl(image: string): string {
     return boiler.dataPath === undefined
       ? BoilerPath.toUrl(image)
@@ -120,7 +159,7 @@
     { title: "Корпус", rows: sizeRows(boiler.frame) },
     { title: "Ножки", rows: sizeRows(boiler.leg) },
     { title: "Загрузочная камера", rows: sizeRows(boiler.chamber) },
-    { title: "Габаритные размеры", rows: sizeRows(boiler.dimensions) },
+    { title: "Габаритные размеры", rows: dimensionRows(boiler) },
     { title: "Дымоход", rows: tubeRows(boiler.chimney) },
     { title: "Патрубок подачи воды", rows: tubeRows(boiler.waterInlet) },
     { title: "Патрубок вывода воды", rows: tubeRows(boiler.waterOutlet) },
@@ -209,6 +248,8 @@
               ])}>
                 {#if row.href}
                   <Link href={row.href}>{row.value}</Link>
+                {:else if row.valueClass}
+                  <span class={row.valueClass}>{row.value}</span>
                 {:else}
                   {row.value}
                 {/if}
