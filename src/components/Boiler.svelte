@@ -207,8 +207,9 @@
         "max-w-[500px]",
       ])}>
         <Carousel slides={(() =>
-          boiler.images.map(path => ({
-            src: imageUrl(path),
+          boiler.images.map(image => ({
+            src: imageUrl(image.path),
+            title: image.title,
           }))
         )()} />
       </div>
