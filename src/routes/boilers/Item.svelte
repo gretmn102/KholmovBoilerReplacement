@@ -16,7 +16,7 @@
 
   $: name = boiler.name.value.case === "known" ? boiler.name.value.fields : "Котёл"
   $: firstImage = boiler.images?.at(0)
-  $: firstImageUrl = firstImage === undefined ? undefined : imageUrl(firstImage)
+  $: firstImageUrl = firstImage === undefined ? undefined : imageUrl(firstImage.path)
 </script>
 
 <a

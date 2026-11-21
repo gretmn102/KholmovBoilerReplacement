@@ -10,10 +10,10 @@ const myBoiler: Boiler = {
     note: "если верить [найденному котлу из магазина Hott](https://hott.com.ua/p1001742026-shahtnyj-kotel-holmova.html/)",
   },
   images: [
-    "images/all.webp",
-    "images/front.webp",
-    "images/right.webp",
-    "images/back.webp",
+    { title: "Задняя, боковая, лицевая", path: "images/all.webp" },
+    { title: "Лицевая сторона", path: "images/front.webp" },
+    { title: "Правая сторона", path: "images/right.webp" },
+    { title: "Задняя сторона", path: "images/back.webp" },
   ],
   sellers: [
     {
