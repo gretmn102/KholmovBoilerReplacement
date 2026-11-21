@@ -148,4 +148,29 @@ export namespace Boiler {
   export function toYaml(boiler: Boiler): string {
     return stringify(boiler)
   }
+
+  export function computeDimensions(boiler: Boiler): Size {
+    function toComputed(valueNote: ValueNote<number>): ValueNote<number> {
+      switch (valueNote.value.case) {
+        case "known":
+          return ValueNote.create(valueNote.value.fields)
+        case "unknown":
+          return ValueNote.createUnknown()
+        case "undefined":
+          return ValueNote.createUndefined()
+      }
+    }
+
+    function add(a: ValueNote<number>, b: ValueNote<number>): ValueNote<number> {
+      return a.value.case === "known" && b.value.case === "known"
+        ? ValueNote.create(a.value.fields + b.value.fields)
+        : ValueNote.createUnknown()
+    }
+
+    return {
+      height: add(boiler.frame.height, boiler.leg.height),
+      width: toComputed(boiler.frame.width),
+      length: toComputed(boiler.frame.length),
+    }
+  }
 }
