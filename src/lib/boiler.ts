@@ -91,6 +91,19 @@ export type Seller = {
   available: ValueNote<boolean>
 }
 
+export type Image = {
+  title: string
+  /** Пути к изображениям задаются относительно `Boiler.datePath`.
+   *
+   * Допустим, задано поле `dataPath` со значением `my-boiler/index.yaml`. В папке `my-boiler/images` есть файл `image.png`. В поле `images` он определен относительно — `images/image.png`. Абсолютный путь определяется так:
+   *
+   * 1. Вернуть папку из `my-boiler/index.yaml`, получится `my-boiler`
+   * 2. `my-boiler` + `/` + `images/image.png`
+   *
+  */
+  path: string
+}
+
 /** английские названия характеристик брал с https://www.ter-en.com/en/konstruktsiya/ktt */
 export type Boiler = {
   /** Локальный путь к файлу с данными. Например:
@@ -99,15 +112,7 @@ export type Boiler = {
    */
   dataPath: Option<string>
   name: ValueNote<string>
-  /** Пути к изображениям задаются относительно `datePath`.
-   *
-   * Допустим, есть поле `dataPath` со значением `my-boiler/index.yaml`. В папке `my-boiler/images` есть файл `image.png`. В поле `images` он определен относительно — `images/image.png`. Абсолютный путь определяется так:
-   *
-   * 1. Вернуть папку из `my-boiler/index.yaml`, получится `my-boiler`
-   * 2. `my-boiler` + `/` + `images/image.png`
-   *
-  */
-  images: string[]
+  images: Image[]
   sellers: Seller[]
   /** Мощность в кВт */
   power: number
